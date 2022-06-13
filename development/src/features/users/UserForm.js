@@ -1,13 +1,18 @@
 import React, {useState} from "react";
 
-import {useAddUserMutation} from "./usersApi";
-
 const UserForm = (props) => {
-	const [id, setId] = useState("");
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
+	const {
+		id: ID,
+		name: NAME,
+		email: EMAIL,
+		handleToggle,
+		formSubmission,
+	} = props;
 
-	const [addUser] = useAddUserMutation();
+	const [id, setId] = useState(ID ? ID : "");
+	const [name, setName] = useState(NAME ? NAME : "");
+	const [email, setEmail] = useState(EMAIL ? EMAIL : "");
+
 	// const {refetch} = useGetUsersQuery()
 
 	const handleChange = (e) => {
@@ -35,13 +40,17 @@ const UserForm = (props) => {
 			email,
 		};
 		resetForm();
-		addUser(formValues);
+
+		formSubmission(formValues);
+
+		if (handleToggle) {
+			handleToggle();
+		}
 		// refetch()
 	};
 
 	return (
 		<div>
-			<h2>User Form</h2>
 			<form onSubmit={handleSubmit}>
 				<label>ID</label>
 				<br />
@@ -65,7 +74,7 @@ const UserForm = (props) => {
 					onChange={handleChange}
 				/>
 				<br />
-				<input type="submit" value="Add" />
+				<input type="submit" value="Save" />
 			</form>
 		</div>
 	);

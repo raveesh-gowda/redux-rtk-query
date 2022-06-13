@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 
-import UserForm from './UserForm'
-import UsersList from './UsersList'
+import UserAdd from "./UserAdd";
+import UsersList from "./UsersList";
 
 const UsersContainer = () => {
-  return (
-    <div>
-        <UserForm />
-        <UsersList/>
-    </div>
-  )
-}
+	return (
+		<div>
+			<UserAdd />
+			<UsersList />
+		</div>
+	);
+};
 
-export default UsersContainer
+export default UsersContainer;

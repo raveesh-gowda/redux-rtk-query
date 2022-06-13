@@ -1,5 +1,6 @@
 import React from "react";
-import UserDetail from "./UserDetail";
+
+import UserItems from "./UserItems";
 import {useDeleteUserMutation, useGetUsersQuery} from "./usersApi";
 
 const UsersList = (props) => {
@@ -21,18 +22,11 @@ const UsersList = (props) => {
 				<div>
 					{data?.map((user) => {
 						return (
-							<div key={user.id}>
-								<h4>{user.name}</h4>
-								<UserDetail id={user.id} />
-                                <button>Edit</button>{" "}
-								<button
-									onClick={() => {
-										handleDelete(user.id);
-									}}
-								>
-									Delete
-								</button>
-							</div>
+							<UserItems
+								key={user.id}
+								{...user}
+								handleDelete={handleDelete}
+							/>
 						);
 					})}
 				</div>
