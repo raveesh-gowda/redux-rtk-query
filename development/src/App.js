@@ -2,7 +2,7 @@ import React from "react";
 
 import UsersContainer from "./features/users/UsersContainer";
 
-function App() {
+function App(props) {
 	return (
 		<div>
 			<h1 style={{textAlign: "center"}}>RTK Query</h1>
